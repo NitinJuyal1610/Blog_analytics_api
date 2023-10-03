@@ -2,7 +2,6 @@
 import express from 'express';
 const app = express();
 
-import { fetchBlogs } from './lib/fetchBlogs.js';
 // Middleware
 import { errorHandlerMiddleware } from './middleware/errorHandlerMiddleware.js';
 

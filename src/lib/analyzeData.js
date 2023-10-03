@@ -1,11 +1,13 @@
 import _ from 'lodash';
-import { fetchBlogs } from './fetchBlogs';
+import { fetchBlogs } from './fetchBlogs.js';
 const analyzeFunction = async () => {
   try {
     const blogData = await fetchBlogs();
     if (!blogData || typeof blogData !== 'object' || !blogData.blogs) {
       throw new Error('Invalid blog data');
     }
+
+    const { blogs } = blogData;
 
     const totalBlogs = _.size(blogs);
     const longestTitledBlog = _.maxBy(blogs, _.property('title.length'));
@@ -28,5 +30,4 @@ const analyzeFunction = async () => {
   }
 };
 
-console.log(memoizedAnalyzeFunction.cache.size);
 export const memoizedAnalyzeFunction = _.memoize(analyzeFunction);

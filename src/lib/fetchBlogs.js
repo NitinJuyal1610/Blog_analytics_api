@@ -11,9 +11,9 @@ export const fetchBlogs = async () => {
       },
     );
 
-    req.blogData = response.data;
-    next();
+    return response.data;
   } catch (error) {
-    next(error);
+    console.error('Error in fetchBlogs:', error.message);
+    throw error;
   }
 };
